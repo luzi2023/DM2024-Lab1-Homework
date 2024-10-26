@@ -9,14 +9,15 @@ Email: ellfae@gmail.com
 def format_rows(docs):
     """ format the text field and strip special characters """
     D = []
-    for d in docs.data:
+    for d in docs:
         temp_d = " ".join(d.split("\n")).strip('\n\t')
         D.append([temp_d])
     return D
 
 def format_labels(target, docs):
     """ format the labels """
-    return docs.target_names[target]
+    label = {'nostalgia':1, 'not nostalgia':0}
+    return docs[target].get(label)
 
 def check_missing_values(row):
     """ functions that check and verifies if there are missing values in dataframe """
